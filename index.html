@@ -38,7 +38,25 @@
     }
     .persona-title .highlight {
       font-size: 1.2em;
-      color: #363636;
+      color: transparent;
+      background: linear-gradient(90deg, #FF8C00, #4682B4, #3CB371);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      animation: gradientShift 8s ease infinite;
+    }
+    .persona-title span:not(.highlight) {
+      color: transparent;
+      background: linear-gradient(90deg, #FF8C00, #4682B4, #3CB371);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      animation: gradientShift 8s ease infinite;
+    }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
     .persona-title img {
       width: 50px;  /* adjust size as needed */
@@ -81,6 +99,65 @@
         opacity: 1;
         transform: translateY(0);
       }
+    }
+    /* ... existing styles ... */
+    
+    .table-container {
+      margin-top: 2rem;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    
+    .table {
+      font-size: 0.85rem;
+      background-color: white;
+      table-layout: fixed;
+    }
+    
+    .table th,
+    .table td {
+      vertical-align: middle !important;
+    }
+    
+    /* First column */
+    .table th:first-child,
+    .table td:first-child {
+      width: 250px;  /* Reduced from 300px to 250px */
+      text-align: left;
+      font-weight: 600;
+      white-space: normal;
+      position: sticky;
+      left: 0;
+      background-color: white;
+      z-index: 1;
+    }
+    
+    /* Second column */
+    .table th:not(:first-child),
+    .table td:not(:first-child) {
+      min-width: 800px;  /* Increased from 600px to 800px */
+      white-space: normal;
+      word-wrap: break-word;
+    }
+    
+    /* Header text should stay on one line */
+    .table th:not(:first-child) {
+      white-space: nowrap;
+    }
+    
+    /* Striped rows with sticky first column */
+    .table.is-striped tbody tr:nth-child(even) td:first-child {
+      background-color: #fafafa;
+    }
+    
+    /* Hover effect with sticky first column */
+    .table.is-hoverable tbody tr:hover td:first-child {
+      background-color: #f5f5f5;
+    }
+    
+    /* Highlight best scores */
+    .has-background-success-light {
+      background-color: rgba(72, 199, 142, 0.2) !important;
     }
   </style>
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
@@ -170,17 +247,17 @@
                       </a>
                     </span>
 
-                    <!-- Hugging Face link 
+                    <!-- Hugging Face link -->
                     <span class="link-block">
-                      <a href="https://huggingface.co/datasets/PersonaMem" target="_blank"
+                      <a href="https://huggingface.co/datasets/bowen-upenn/PersonaMem" target="_blank"
                       class="external-link button is-normal is-rounded is-dark">
-                      <span class="icon">
-                        <i class="fas fa-hugging-face"></i>
-                      </span>
-                      <span>Dataset</span>
-                    </a>
-                  </span>
-                  -->
+                        <span class="icon">
+                          <i class="fab fa-hubspot"></i>
+                        </span>
+                        <span>HF Dataset</span>
+                      </a>
+                    </span>
+                  
 
                   <!-- Github link -->
                   <span class="link-block">
@@ -211,26 +288,654 @@
   </div>
 </section>
 
-
 <!-- Teaser image-->
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <div class="animated-figure-container">
-        <div class="figure-column left-column">
-          <img src="static/images/personamem_left.png" alt="User Persona and Interaction History">
-        </div>
-        <div class="figure-column right-column">
-          <img src="static/images/personamem_right.png" alt="User Utterances and Preference Evolution">
-        </div>
-      </div>
-      <h2 class="subtitle has-text-centered">
-        PersonaMem captures and leverages evolving user preferences through multi-session interactions.
+      <h2 class="title is-2 has-text-centered mb-5">
+        What is 
+        <span class="persona-title" style="display: inline-flex; align-items: center; vertical-align: middle; gap: 10px;">
+          <img src="static/images/personamem_icon.png" alt="PersonaMem Icon" style="width: 40px; height: 40px; vertical-align: middle;">
+          <span style="vertical-align: middle; display: inline-flex; align-items: center;">
+            <span class="highlight" style="font-size: 2.4rem; line-height: 1; vertical-align: middle;">P</span><span style="font-size: 1.8rem; line-height: 1; vertical-align: middle;">ERSONA</span><span class="highlight" style="font-size: 2.4rem; line-height: 1; vertical-align: middle;">M</span><span style="font-size: 1.8rem; line-height: 1; vertical-align: middle;">EM</span>
+          </span>
+        </span>
+        <span style="vertical-align: middle;">?</span>
       </h2>
+      <div class="content">
+        <p class="subtitle" style="text-align: left;">
+          PERSONAMEM is a benchmark used to study the three research questions:
+          <br>
+          1. <strong>User profiling</strong>: Can LLMs learn about users' traits and preferences from interaction histories?
+          <br>
+          2. <strong>Dynamic Tracking</strong>: Can LLMs recognize how user profiling and preferences evolve over time?
+          <br>
+          3. <strong>Personalized Response</strong>: Can LLMs generate personalized responses accordingly in new scenarios?
+        </p>
+      </div>
+      <div class="has-text-centered">
+        <img src="static/images/personamem_overview.gif" alt="PersonaMem Overview: Animated demonstration showing user persona with static and dynamic profiles on the left, and evolving user preferences through chat interactions on the right" style="max-width: 100%; height: auto;">
+      </div>
+      <p class="subtitle" style="text-align: left; margin-top: 1em;">
+        The </strong>PersonaMem</strong> benchmark evaluates whether LLMs can <strong>infer evolving user profiles</strong> and </strong>generate personalized responses</strong> across tasks scenarios. Each benchmark instance features a <strong>user persona</strong>
+          with static (e.g., demographic info.) and dynamic attributes (e.g., evolving preferences).
+          Users engage with a chatbot in <strong>multi-session interactions</strong> across a variety of topics such as
+          food recommendation, travel planning, and therapy consultation. As the user's </strong>preferences
+          evolve over time</strong>, the benchmark offers annotated questions assessing whether LLMs can provide the most suitable response to <strong><em>in-situ</em> user queries</strong>,  where
+          users issue queries to LLMs from first-person perspectives. We present two types of user queries here. A complete list of the 7 types of <em>in-situ</em> user queries is provided afterward.
+      </p>
     </div>
   </div>
 </section>
 <!-- End teaser image -->
+
+<!-- Leaderboard Section -->
+<section class="section">
+  <div class="container" style="max-width: 90%; margin: auto;">
+    <h2 class="title is-3 has-text-centered">Leaderboard</h2>
+    <h3 class="title is-3 has-text-centered">Model Performance by Query Types</h3>
+    <p class="has-text-centered mb-4">
+      Evaluation results across different models on 7 <em>in-situ</em> query types.
+    </p>
+    <div class="table-container" style="overflow-x: auto;">
+      <table class="table is-fullwidth is-hoverable">
+        <thead>
+          <tr>
+            <th>Query Type \ Model</th>
+            <th>Gemini<br>1.5-Flash</th>
+            <th>GPT-4.5</th>
+            <th>Gemini<br>2.0-Flash</th>
+            <th>o1</th>
+            <th>Gemini<br>2.0-Flash-Lite</th>
+            <th>DeepSeek<br>R1-671B</th>
+            <th>GPT-4o</th>
+            <th>Llama<br>4-Maverick</th>
+            <th>GPT<br>4o-mini</th>
+            <th>o3-mini</th>
+            <th>Claude<br>3.5-Haiku</th>
+            <th>Llama<br>3.1-405B</th>
+            <th>Claude<br>3.7-Sonnet</th>
+            <th>Average</th>
+            <th>Random<br>Guess</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Revisit Reasons Behind Preference Updates</td>
+            <td>0.77</td>
+            <td>0.76</td>
+            <td>0.79</td>
+            <td>0.75</td>
+            <td>0.77</td>
+            <td class="has-background-success-light">0.83</td>
+            <td>0.77</td>
+            <td>0.76</td>
+            <td>0.70</td>
+            <td>0.72</td>
+            <td>0.64</td>
+            <td>0.41</td>
+            <td>0.57</td>
+            <td>0.71</td>
+            <td>0.25</td>
+          </tr>
+          <tr>
+            <td>Tracking Full Preference Evolution</td>
+            <td>0.65</td>
+            <td>0.68</td>
+            <td class="has-background-success-light">0.70</td>
+            <td>0.67</td>
+            <td>0.68</td>
+            <td>0.68</td>
+            <td>0.68</td>
+            <td>0.66</td>
+            <td>0.60</td>
+            <td>0.54</td>
+            <td>0.55</td>
+            <td>0.38</td>
+            <td>0.45</td>
+            <td>0.61</td>
+            <td>0.25</td>
+          </tr>
+          <tr>
+            <td>Recall User Shared Facts</td>
+            <td>0.54</td>
+            <td class="has-background-success-light">0.61</td>
+            <td>0.50</td>
+            <td>0.50</td>
+            <td>0.49</td>
+            <td>0.43</td>
+            <td>0.41</td>
+            <td>0.37</td>
+            <td>0.55</td>
+            <td>0.47</td>
+            <td>0.29</td>
+            <td>0.38</td>
+            <td>0.25</td>
+            <td>0.44</td>
+            <td>0.25</td>
+          </tr>
+          <tr>
+            <td>Acknowledge Latest User Preference</td>
+            <td class="has-background-success-light">0.59</td>
+            <td>0.55</td>
+            <td>0.52</td>
+            <td>0.54</td>
+            <td>0.51</td>
+            <td>0.42</td>
+            <td>0.46</td>
+            <td>0.43</td>
+            <td>0.34</td>
+            <td>0.39</td>
+            <td>0.27</td>
+            <td>0.31</td>
+            <td>0.09</td>
+            <td>0.42</td>
+            <td>0.25</td>
+          </tr>
+          <tr>
+            <td>Provide Preference Aligned Recommendations</td>
+            <td class="has-background-success-light">0.55</td>
+            <td>0.44</td>
+            <td>0.51</td>
+            <td>0.42</td>
+            <td>0.52</td>
+            <td>0.49</td>
+            <td>0.37</td>
+            <td>0.42</td>
+            <td>0.41</td>
+            <td>0.41</td>
+            <td>0.32</td>
+            <td>0.37</td>
+            <td>0.20</td>
+            <td>0.42</td>
+            <td>0.25</td>
+          </tr>
+          <tr>
+            <td>Generalize Reasons to New Scenarios</td>
+            <td class="has-background-success-light">0.54</td>
+            <td>0.46</td>
+            <td>0.46</td>
+            <td>0.39</td>
+            <td>0.33</td>
+            <td>0.38</td>
+            <td>0.32</td>
+            <td>0.32</td>
+            <td>0.33</td>
+            <td>0.30</td>
+            <td>0.20</td>
+            <td>0.21</td>
+            <td>0.29</td>
+            <td>0.35</td>
+            <td>0.25</td>
+          </tr>
+          <tr>
+            <td>Suggest New Ideas</td>
+            <td>0.15</td>
+            <td>0.27</td>
+            <td>0.15</td>
+            <td>0.25</td>
+            <td>0.16</td>
+            <td>0.16</td>
+            <td>0.24</td>
+            <td>0.20</td>
+            <td>0.10</td>
+            <td>0.11</td>
+            <td>0.06</td>
+            <td>0.20</td>
+            <td class="has-background-success-light">0.28</td>
+            <td>0.18</td>
+            <td>0.25</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="has-text-centered mt-4">
+      <h4 class="title is-5">Key Findings:</h4>
+      <ul style="text-align: left; display: inline-block;">
+        <li>• LLMs demonstrate reasonably good performance in recalling simple user facts.</li>
+        <li>• Incorporating the latest user preference into responses is more challenging than recalling the change in user profile.</li>
+        <li>• Models fall short on generating new ideas or providing suggestions in new scenarios.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+<!-- End Leaderboard Section -->
+
+<!-- Long Context Performance Section (moved here from below) -->
+<section class="section">
+  <div class="container" style="max-width: 90%; margin: auto;">
+    <h2 class="title is-3 has-text-centered">Model Performance by Session Count</h2>
+    <p class="has-text-centered mb-4">
+      Model performances by number of sessions elapsed since most recent preferences
+      were mentioned in long context. The results for up to 20 sessions/128k tokens is presented here. We have the results for up to 60
+      sessions/1M tokens afterward.
+    </p>
+    <div class="table-container" style="overflow-x: auto;">
+      <table class="table is-fullwidth is-hoverable">
+        <thead>
+          <tr>
+            <th>Model \ Num Sessions</th>
+            <th>Overall</th>
+            <th>1</th>
+            <th>2</th>
+            <th>3</th>
+            <th>4</th>
+            <th>5</th>
+            <th>6</th>
+            <th>7</th>
+            <th>8</th>
+            <th>9</th>
+            <th>10</th>
+            <th>11</th>
+            <th>12</th>
+            <th>13</th>
+            <th>14</th>
+            <th>15</th>
+            <th>16</th>
+            <th>17</th>
+            <th>18</th>
+            <th>19</th>
+            <th>20</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Gemini-1.5-Flash</td>
+            <td class="has-background-success-light">0.52</td>
+            <td>0.74</td>
+            <td>0.56</td>
+            <td>0.53</td>
+            <td>0.54</td>
+            <td>0.50</td>
+            <td>0.47</td>
+            <td>0.49</td>
+            <td>0.51</td>
+            <td>0.53</td>
+            <td>0.50</td>
+            <td>0.49</td>
+            <td>0.42</td>
+            <td>0.54</td>
+            <td>0.48</td>
+            <td>0.44</td>
+            <td>0.53</td>
+            <td>0.65</td>
+            <td>0.57</td>
+            <td>0.48</td>
+            <td>0.48</td>
+          </tr>
+          <tr>
+            <td>GPT-4.5</td>
+            <td class="has-background-success-light">0.52</td>
+            <td>0.74</td>
+            <td>0.53</td>
+            <td>0.57</td>
+            <td>0.56</td>
+            <td>0.54</td>
+            <td>0.52</td>
+            <td>0.50</td>
+            <td>0.44</td>
+            <td>0.52</td>
+            <td>0.46</td>
+            <td>0.46</td>
+            <td>0.41</td>
+            <td>0.52</td>
+            <td>0.53</td>
+            <td>0.36</td>
+            <td>0.48</td>
+            <td>0.68</td>
+            <td>0.65</td>
+            <td>0.48</td>
+            <td>0.42</td>
+          </tr>
+          <tr>
+            <td>o1</td>
+            <td>0.50</td>
+            <td>0.68</td>
+            <td>0.56</td>
+            <td>0.54</td>
+            <td>0.49</td>
+            <td>0.54</td>
+            <td>0.45</td>
+            <td>0.48</td>
+            <td>0.46</td>
+            <td>0.48</td>
+            <td>0.45</td>
+            <td>0.46</td>
+            <td>0.41</td>
+            <td>0.53</td>
+            <td>0.39</td>
+            <td>0.36</td>
+            <td>0.44</td>
+            <td>0.66</td>
+            <td>0.58</td>
+            <td>0.47</td>
+            <td>0.44</td>
+          </tr>
+          <tr>
+            <td>Gemini-2.0-Flash</td>
+            <td>0.49</td>
+            <td>0.73</td>
+            <td>0.52</td>
+            <td>0.55</td>
+            <td>0.48</td>
+            <td>0.45</td>
+            <td>0.48</td>
+            <td>0.48</td>
+            <td>0.51</td>
+            <td>0.50</td>
+            <td>0.44</td>
+            <td>0.42</td>
+            <td>0.41</td>
+            <td>0.52</td>
+            <td>0.46</td>
+            <td>0.42</td>
+            <td>0.46</td>
+            <td>0.61</td>
+            <td>0.51</td>
+            <td>0.52</td>
+            <td>0.42</td>
+          </tr>
+          <tr>
+            <td>Gemini-2.0-Flash-Lite</td>
+            <td>0.48</td>
+            <td>0.76</td>
+            <td>0.45</td>
+            <td>0.52</td>
+            <td>0.50</td>
+            <td>0.42</td>
+            <td>0.48</td>
+            <td>0.44</td>
+            <td>0.40</td>
+            <td>0.46</td>
+            <td>0.35</td>
+            <td>0.38</td>
+            <td>0.40</td>
+            <td>0.44</td>
+            <td>0.47</td>
+            <td>0.44</td>
+            <td>0.56</td>
+            <td>0.63</td>
+            <td>0.53</td>
+            <td>0.50</td>
+            <td>0.40</td>
+          </tr>
+          <tr>
+            <td>GPT-4o</td>
+            <td>0.45</td>
+            <td class="has-background-success-light">0.83</td>
+            <td>0.51</td>
+            <td>0.55</td>
+            <td>0.44</td>
+            <td>0.43</td>
+            <td>0.47</td>
+            <td>0.38</td>
+            <td>0.42</td>
+            <td>0.43</td>
+            <td>0.40</td>
+            <td>0.36</td>
+            <td>0.38</td>
+            <td>0.42</td>
+            <td>0.32</td>
+            <td>0.29</td>
+            <td>0.38</td>
+            <td>0.66</td>
+            <td>0.54</td>
+            <td>0.48</td>
+            <td>0.36</td>
+          </tr>
+          <tr>
+            <td>DeepSeek-R1-671B</td>
+            <td>0.45</td>
+            <td class="has-background-success-light">0.84</td>
+            <td>0.56</td>
+            <td>0.51</td>
+            <td>0.49</td>
+            <td>0.50</td>
+            <td>0.47</td>
+            <td>0.50</td>
+            <td>0.45</td>
+            <td>0.41</td>
+            <td>0.28</td>
+            <td>0.35</td>
+            <td>0.28</td>
+            <td>0.43</td>
+            <td>0.30</td>
+            <td>0.38</td>
+            <td>0.46</td>
+            <td>0.61</td>
+            <td>0.50</td>
+            <td>0.44</td>
+            <td>0.37</td>
+          </tr>
+          <tr>
+            <td>Llama-4-Maverick</td>
+            <td>0.43</td>
+            <td>0.76</td>
+            <td>0.31</td>
+            <td>0.45</td>
+            <td>0.48</td>
+            <td>0.38</td>
+            <td>0.33</td>
+            <td>0.37</td>
+            <td>0.45</td>
+            <td>0.36</td>
+            <td>0.39</td>
+            <td>0.30</td>
+            <td>0.41</td>
+            <td>0.37</td>
+            <td>0.39</td>
+            <td>0.39</td>
+            <td>0.54</td>
+            <td>0.62</td>
+            <td>0.50</td>
+            <td>0.50</td>
+            <td>0.36</td>
+          </tr>
+          <tr>
+            <td>o3-mini</td>
+            <td>0.39</td>
+            <td>0.80</td>
+            <td>0.48</td>
+            <td>0.44</td>
+            <td>0.45</td>
+            <td>0.36</td>
+            <td>0.39</td>
+            <td>0.39</td>
+            <td>0.36</td>
+            <td>0.37</td>
+            <td>0.27</td>
+            <td>0.31</td>
+            <td>0.38</td>
+            <td>0.35</td>
+            <td>0.32</td>
+            <td>0.26</td>
+            <td>0.41</td>
+            <td>0.56</td>
+            <td>0.39</td>
+            <td>0.35</td>
+            <td>0.33</td>
+          </tr>
+          <tr>
+            <td>GPT-4o-mini</td>
+            <td>0.39</td>
+            <td>0.73</td>
+            <td>0.45</td>
+            <td>0.46</td>
+            <td>0.36</td>
+            <td>0.34</td>
+            <td>0.37</td>
+            <td>0.36</td>
+            <td>0.35</td>
+            <td>0.25</td>
+            <td>0.30</td>
+            <td>0.29</td>
+            <td>0.32</td>
+            <td>0.34</td>
+            <td>0.33</td>
+            <td>0.36</td>
+            <td>0.42</td>
+            <td>0.60</td>
+            <td>0.44</td>
+            <td>0.37</td>
+            <td>0.32</td>
+          </tr>
+          <tr>
+            <td>Llama-3.1-405B</td>
+            <td>0.31</td>
+            <td>0.40</td>
+            <td>0.30</td>
+            <td>0.32</td>
+            <td>0.27</td>
+            <td>0.25</td>
+            <td>0.24</td>
+            <td>0.32</td>
+            <td>0.25</td>
+            <td>0.34</td>
+            <td>0.30</td>
+            <td>0.30</td>
+            <td>0.37</td>
+            <td>0.29</td>
+            <td>0.28</td>
+            <td>0.34</td>
+            <td>0.33</td>
+            <td>0.42</td>
+            <td>0.36</td>
+            <td>0.27</td>
+            <td>0.31</td>
+          </tr>
+          <tr>
+            <td>Claude-3.5-Haiku</td>
+            <td>0.30</td>
+            <td>0.60</td>
+            <td>0.27</td>
+            <td>0.38</td>
+            <td>0.27</td>
+            <td>0.28</td>
+            <td>0.22</td>
+            <td>0.24</td>
+            <td>0.26</td>
+            <td>0.25</td>
+            <td>0.18</td>
+            <td>0.22</td>
+            <td>0.26</td>
+            <td>0.36</td>
+            <td>0.25</td>
+            <td>0.24</td>
+            <td>0.35</td>
+            <td>0.52</td>
+            <td>0.34</td>
+            <td>0.33</td>
+            <td>0.22</td>
+          </tr>
+          <tr>
+            <td>Claude-3.7-Sonnet</td>
+            <td>0.26</td>
+            <td>0.76</td>
+            <td>0.27</td>
+            <td>0.31</td>
+            <td>0.26</td>
+            <td>0.20</td>
+            <td>0.28</td>
+            <td>0.21</td>
+            <td>0.20</td>
+            <td>0.10</td>
+            <td>0.15</td>
+            <td>0.17</td>
+            <td>0.12</td>
+            <td>0.22</td>
+            <td>0.20</td>
+            <td>0.19</td>
+            <td>0.29</td>
+            <td>0.47</td>
+            <td>0.28</td>
+            <td>0.27</td>
+            <td>0.19</td>
+          </tr>
+          <tr>
+            <td>Average</td>
+            <td>0.42</td>
+            <td>0.72</td>
+            <td>0.45</td>
+            <td>0.47</td>
+            <td>0.43</td>
+            <td>0.40</td>
+            <td>0.40</td>
+            <td>0.40</td>
+            <td>0.39</td>
+            <td>0.39</td>
+            <td>0.34</td>
+            <td>0.35</td>
+            <td>0.35</td>
+            <td>0.41</td>
+            <td>0.36</td>
+            <td>0.34</td>
+            <td>0.43</td>
+            <td>0.59</td>
+            <td>0.48</td>
+            <td>0.42</td>
+            <td>0.36</td>
+          </tr>
+          <tr>
+            <td>Random Guess</td>
+            <td>0.25</td>
+            <td>0.25</td>
+            <td>0.25</td>
+            <td>0.25</td>
+            <td>0.25</td>
+            <td>0.25</td>
+            <td>0.25</td>
+            <td>0.25</td>
+            <td>0.25</td>
+            <td>0.25</td>
+            <td>0.25</td>
+            <td>0.25</td>
+            <td>0.25</td>
+            <td>0.25</td>
+            <td>0.25</td>
+            <td>0.25</td>
+            <td>0.25</td>
+            <td>0.25</td>
+            <td>0.25</td>
+            <td>0.25</td>
+            <td>0.25</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="has-text-centered mt-4">
+      <h4 class="title is-5">Key Findings:</h4>
+      <ul style="text-align: left; display: inline-block;">
+        <li>• GPT-4.5 and Gemini-1.5 achieve the highest overall performance.</li>
+        <li>• The model performs better when the relevant information appears in the earlier or later sessions of the conversation history. It echoes the "lost-in-the-middle" effect in long-context setting.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+<!-- End Long Context Performance Section -->
+
+<!-- Paper Contribution Section -->
+<section class="section hero" style="background-color: #fffaea;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column">
+        <h2 class="title is-3 has-text-centered">Our Contributions</h2>
+        <div class="content">
+          <ul class="is-size-5" style="line-height: 1.7;">
+            <li>• We propose the <span class="persona-title" style="display: inline-flex; align-items: center; gap: 5px;">
+              <span><span class="highlight">P</span>ERSONA<span class="highlight">M</span>EM</span>
+            </span> benchmark and its synthetic dialog generation pipeline for persona-oriented, multi-session, and timelined user-chatbot interaction history.</li>
+            <li>• We assess 13 LLMs on 7 types of in-situ user queries and evaluate their ability to provide responses aligned with user's dynamically changing profile across 15 task scenarios.</li>
+            <li>• With <span class="persona-title" style="display: inline-flex; align-items: center; gap: 5px;">
+              <span><span class="highlight">P</span>ERSONA<span class="highlight">M</span>EM</span>
+            </span>, we observe that frontier models such as GPT-4.5, o1, DeepSeek-R1, Gemini-2.0, Llama-4 still struggle to be user-aware and deliver personalized responses, especially when the knowledge of the user needs to be applied across new scenarios.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- Paper abstract -->
 <section class="section hero is-light">
@@ -240,7 +945,12 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ullamcorper tellus sed ante aliquam tempus. Etiam porttitor urna feugiat nibh elementum, et tempor dolor mattis. Donec accumsan enim augue, a vulputate nisi sodales sit amet. Proin bibendum ex eget mauris cursus euismod nec et nibh. Maecenas ac gravida ante, nec cursus dui. Vivamus purus nibh, placerat ac purus eget, sagittis vestibulum metus. Sed vestibulum bibendum lectus gravida commodo. Pellentesque auctor leo vitae sagittis suscipit.
+            Large Language Models (LLMs) have emerged as <em>personalized</em> assistants for users across a wide range of tasks -- from offering writing support to delivering tailored recommendations or consultations. Over time, the interaction history between a user and an LLM can provide extensive information about an individual's traits and preferences. However, open questions remain on how well LLMs today can effectively leverage such history to (1) internalize the user's inherent traits and preferences, (2) track how the user profiling and preferences evolve over time, and (3) generate personalized responses accordingly in new scenarios.
+          </p>
+          <p>
+            In this work, we introduce the <span class="persona-title" style="display: inline-flex; align-items: center; gap: 5px;">
+              <span><span class="highlight">P</span>ERSONA<span class="highlight">M</span>EM</span>
+            </span> benchmark. <span class="persona-title" style="display: inline;"><span class="highlight">P</span>ERSONA<span class="highlight">M</span>EM</span> features curated user profiles with over 180 simulated user-LLM interaction histories, each containing up to 60 sessions of multi-turn conversations across 15 real-world tasks that require personalization. Given an <em>in-situ</em> user query, i.e. query issued by the user from the first-person perspective, we evaluate LLM chatbots' ability to identify the most suitable response according to the current state of the user's profile. We observe that current LLMs still struggle to recognize the dynamic evolution in users' profiles over time through direct prompting approaches. As a consequence, LLMs often fail to deliver responses that align with users' current situations and preferences, with frontier models such as GPT-4.5, o1, Gemini-2.0, or Llama-4-Maverick achieving only around or below 50% overall accuracy, suggesting room for improvement. We hope that <span class="persona-title" style="display: inline;"><span class="highlight">P</span>ERSONA<span class="highlight">M</span>EM</span>, along with the user profile and conversation simulation pipeline, can facilitate future research in the development of truly user-aware chatbots.
           </p>
         </div>
       </div>
@@ -249,122 +959,252 @@
 </section>
 <!-- End paper abstract -->
 
+<!-- PersonaMem Overview Section -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-2 has-text-centered">
+      <span class="persona-title" style="display: inline-flex; align-items: center; gap: 10px;">
+        <img src="static/images/personamem_icon.png" alt="PersonaMem Icon" style="width: 40px; height: 40px;">
+        <span>Overview of <span class="highlight">P</span>ERSONA<span class="highlight">M</span>EM</span>
+      </span>
+    </h2>
 
-<!-- Image carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-       <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel1.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-          First image description.
-        </h2>
+    <!-- Evaluation Tasks Subsection -->
+    <div class="content mt-5">
+      <h3 class="title is-3">Evaluation Tasks</h3>
+      <div class="columns is-centered">
+        <div class="column is-10">
+          <p>
+            To evaluate LLMs' ability to:
+          </p>
+          <ul>
+            <li>memorize the user profile</li>
+            <li>track how the user profile evolve over time</li>
+            <li>generate personalized responses accordingly in new scenarios</li>
+          </ul>
+          <p>
+            we design the following 7 types of <em>in-situ</em> user queries in the <span class="persona-title" style="display: inline-flex; align-items: center; gap: 5px;">
+              <span><span class="highlight">P</span>ERSONA<span class="highlight">M</span>EM</span>
+            </span> benchmark.
+          </p>
+          <!-- Insert table here -->
+          <div class="table-container" style="margin: 2em auto; width: 100%;">
+            <table class="table is-bordered is-striped is-narrow is-hoverable">
+              <thead>
+                <tr>
+                  <th style="width: 300px;">Query type</th>
+                  <th>Examples of <em>in-situ</em> user queries and chatbot responses</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="font-weight: bold; color: #0066cc; white-space: nowrap;">[1] Recall user-shared facts</td>
+                  <td style="white-space: normal; word-wrap: break-word;"><em>"User: I shared my <span style="background-color: #bcde94;">playlist</span> with my friends and they loved it. ...... (later) User: What are some creative ways to share music? --- Chatbot: Curating personalized <span style="background-color: #bcde94;">playlists</span> can be fun."</em></td>
+                </tr>
+                <tr>
+                  <td style="font-weight: bold; color: #0066cc; white-space: nowrap;">[2] Suggest new ideas</td>
+                  <td style="white-space: normal; word-wrap: break-word;"><em>"User: ...... (later) User: Suggest new restaurant I <span style="background-color: #bcde94;">haven't</span> ordered before."</em></td>
+                </tr>
+                <tr>
+                  <td style="font-weight: bold; color: #0066cc; white-space: nowrap;">[3] Acknowledge latest user preferences</td>
+                  <td style="white-space: normal; word-wrap: break-word;"><em>"User: I am a big fan of <span style="background-color: #ffa39b;">Italian</span> food. ...... (later) User: I prefer <span style="background-color: #bcde94;">Mediterranean</span> cuisine now. ... (later) User: I went to an Italian restaurant yesterday --- Chatbot: Nice to hear! Though I thought you prefer <span style="background-color: #bcde94;">Mediterranean</span> food now."</em></td>
+                </tr>
+                <tr>
+                  <td style="font-weight: bold; color: #0066cc; white-space: nowrap;">[4] Track full preference evolution</td>
+                  <td style="white-space: normal; word-wrap: break-word;"><em>"User: ...... (later) User: I am thinking about attending a cooking class. --- Chatbot: I understand your perspective on cooking classes has evolved. Initially, you expressed a <span style="background-color: #ffa39b;">dislike</span>, but later you mentioned your <span style="background-color: #bcde94;">interest</span> in them."</em></td>
+                </tr>
+                <tr>
+                  <td style="font-weight: bold; color: #0066cc; white-space: nowrap;">[5] Revisit reasons behind preference updates</td>
+                  <td style="white-space: normal; word-wrap: break-word;"><em>"User: I am a big fan of Italian food. ...... (later) User: I recently found I'm <span style="background-color: #bcde94;">allergic to gluten</span>, so I've shifted to other dishes. ... (later) User: I went to an Italian restaurant yesterday --- Chatbot: How's your <span style="background-color: #bcde94;">allergy</span> been? I guess they must have a <span style="background-color: #bcde94;">gluten-free</span> pizza."</em></td>
+                </tr>
+                <tr>
+                  <td style="font-weight: bold; color: #0066cc; white-space: nowrap;">[6] Provide preference aligned recommendations</td>
+                  <td style="white-space: normal; word-wrap: break-word;"><em>"User: I prefer <span style="background-color: #bcde94;">Mediterranean</span> seafood now. ...... (later) User: How can I make impactful lifestyle changes? --- Chatbot: How about diving into the <span style="background-color: #bcde94;">Mediterranean</span> diet plan?"</em></td>
+                </tr>
+                <tr>
+                  <td style="font-weight: bold; color: #0066cc; white-space: nowrap;">[7] Generalize to new scenarios</td>
+                  <td style="white-space: normal; word-wrap: break-word;"><em>"User: I prefer my yoga class because of its <span style="background-color: #bcde94;">fixed weekly schedule</span>. ...... (later) User: I recently haven't had time to cook. --- Chatbot: Since you seem to love <span style="background-color: #bcde94;">routine</span> would you be interested in weekly scheduled bento-box deliveries?"</em></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel2.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-          Second image description.
-        </h2>
-      </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel3.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-         Third image description.
-       </h2>
-     </div>
-     <div class="item">
-      <!-- Your image here -->
-      <img src="static/images/carousel4.jpg" alt="MY ALT TEXT"/>
-      <h2 class="subtitle has-text-centered">
-        Fourth image description.
-      </h2>
     </div>
-  </div>
-</div>
-</div>
-</section>
-<!-- End image carousel -->
 
+    <!-- Benchmark Data Statistics Subsection -->
+    <div class="content mt-5">
+      <h3 class="title is-3">Benchmark Data Statistics</h3>
+      <div class="columns is-centered">
+        <div class="column is-10">
+          <div class="columns is-multiline">
+            <!-- Core Statistics -->
+            <div class="column is-one-third">
+              <div class="box has-text-centered">
+                <span class="icon is-large">
+                  <i class="fas fa-users fa-2x"></i>
+                </span>
+                <p class="title is-4">20</p>
+                <p class="subtitle is-6">Unique Personas</p>
+              </div>
+            </div>
+            <div class="column is-one-third">
+              <div class="box has-text-centered">
+                <span class="icon is-large">
+                  <i class="fas fa-history fa-2x"></i>
+                </span>
+                <p class="title is-4">180+</p>
+                <p class="subtitle is-6">Interaction Histories</p>
+              </div>
+            </div>
+            <div class="column is-one-third">
+              <div class="box has-text-centered">
+                <span class="icon is-large">
+                  <i class="fas fa-comments fa-2x"></i>
+                </span>
+                <p class="title is-4">~6,000</p>
+                <p class="subtitle is-6">Query-Response Pairs</p>
+              </div>
+            </div>
 
+            <!-- Session Details -->
+            <div class="column is-12">
+              <div class="box">
+                <h4 class="title is-5">Session Variations (15-30 turns/session)</h4>
+                <div class="columns is-mobile">
+                  <div class="column has-text-centered">
+                    <p class="is-size-5 has-text-weight-bold mb-2">Short</p>
+                    <p class="is-size-4 has-text-weight-bold has-text-primary mb-1">10</p>
+                    <p class="is-size-6 mb-0">sessions</p>
+                    <p class="is-size-6 has-text-grey">~<strong>32k</strong> tokens</p>
+                  </div>
+                  <div class="column has-text-centered">
+                    <p class="is-size-5 has-text-weight-bold mb-2">Medium</p>
+                    <p class="is-size-4 has-text-weight-bold has-text-info mb-1">20</p>
+                    <p class="is-size-6 mb-0">sessions</p>
+                    <p class="is-size-6 has-text-grey">~<strong>128k</strong> tokens</p>
+                  </div>
+                  <div class="column has-text-centered">
+                    <p class="is-size-5 has-text-weight-bold mb-2">Long</p>
+                    <p class="is-size-4 has-text-weight-bold has-text-danger mb-1">60</p>
+                    <p class="is-size-6 mb-0">sessions</p>
+                    <p class="is-size-6 has-text-grey">~</strong>1M</strong> tokens</p>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-
-<!-- Youtube video -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <!-- Paper video. -->
-      <h2 class="title is-3">Video Presentation</h2>
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          
-          <div class="publication-video">
-            <!-- Youtube embed code here -->
-            <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <!-- Topics Coverage -->
+            <div class="column is-12">
+              <div class="box">
+                <h4 class="title is-5">15 Diverse Topics</h4>
+                <div class="tags are-medium is-centered">
+                  <span class="tag is-info">Therapy</span>
+                  <span class="tag is-info">Legal Advice</span>
+                  <span class="tag is-success">Books</span>
+                  <span class="tag is-success">Music</span>
+                  <span class="tag is-success">Movies</span>
+                  <span class="tag is-success">Food</span>
+                  <span class="tag is-warning">Family</span>
+                  <span class="tag is-warning">Dating</span>
+                  <span class="tag is-warning">Health</span>
+                  <span class="tag is-warning">Finance</span>
+                  <span class="tag is-danger">Travel Planning</span>
+                  <span class="tag is-danger">Online Shopping</span>
+                  <span class="tag is-danger">Studying Tips</span>
+                  <span class="tag is-danger">Home Decoration</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-<!-- End youtube video -->
 
-
-<!-- Video carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3">Another Carousel</h2>
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-video1">
-          <video poster="" id="video1" autoplay controls muted loop height="100%">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel1.mp4"
-            type="video/mp4">
-          </video>
+<!--Experiment Results Section-->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-2 has-text-centered">More Experiment Results</h2>
+    
+    <!-- 1M Token Results -->
+    <div class="content mt-5">
+      <h3 class="title is-4 has-text-centered">Performance on Ultra-Long Context (Up to 60 Sessions/1M Tokens)</h3>
+      <div class="columns is-centered">
+        <div class="column is-10">
+          <figure class="image">
+            <img src="static/images/results_length_1m.png" alt="Performance on ultra-long context up to 60 sessions/1M tokens">
+            <figcaption class="has-text-centered mt-2">
+              We observe similar patterns of the position of user information in interaction history compared to the 32k token length results.
+            </figcaption>
+          </figure>
         </div>
-        <div class="item item-video2">
-          <video poster="" id="video2" autoplay controls muted loop height="100%">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel2.mp4"
-            type="video/mp4">
-          </video>
+      </div>
+    </div>
+    
+    <!-- RAG and MemO Results -->
+    <div class="content mt-5">
+      <h3 class="title is-4 has-text-centered">Comparison of Direct Prompting vs. RAG vs. MemO</h3>
+      <div class="columns is-centered">
+        <div class="column is-10">
+          <figure class="image">
+            <img src="static/images/rag_mem0_32k.png" alt="Comparison of direct prompting vs. RAG vs. memory optimization approaches">
+            <figcaption class="has-text-centered mt-2">
+              We evaluate whether using a retriever to identify relevant information in the history will help
+              improve model's performance. We evaluate two external memory approaches—RAG and MemO—against vanilla LLMs. For these experiments, we
+              consider only the GPT-4o and GPT-4o-mini models. Overall, external
+              memory modules significantly improve accuracy for both models. Notably, <em>Recall User-
+              Shared Facts</em> and <em>Generalize to New Scenarios</em> benefit the most, highlighting the effectiveness of
+              retrieval in factual tasks. In contrast, <em>Revisit Reasons Behind Preference Updates</em> shows smaller
+              gains.
+            </figcaption>
+          </figure>
         </div>
-        <div class="item item-video3">
-          <video poster="" id="video3" autoplay controls muted loop height="100%">\
-            <!-- Your video file here -->
-            <source src="static/videos/carousel3.mp4"
-            type="video/mp4">
-          </video>
+      </div>
+    </div>
+    
+    <!-- Generative Model Results -->
+    <div class="content mt-5">
+      <h3 class="title is-4 has-text-centered">Evaluation of LLMs in Generative Settings</h3>
+      <div class="columns is-centered">
+        <div class="column is-10">
+          <figure class="image">
+            <img src="static/images/results_generative.png" alt="Performance of generative models across different query types">
+            <figcaption class="has-text-centered mt-2">
+              In real-world scenarios, chatbots don't have access to multiple response options during inference. We evaluate models in generative settings, where the best response is selected using <strong>joint sequence probability</strong> from model predictions. Results follow similar trends to our discriminative evaluation across query types. Interestingly, LLama-3.1-8B-instruct performs better in generative settings, suggesting it can provide personalized responses without seeing all candidate options.
+            </figcaption>
+          </figure>
         </div>
       </div>
     </div>
   </div>
 </section>
-<!-- End video carousel -->
 
-
-
-
-
-
-<!-- Paper poster -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title">Poster</h2>
-
-      <iframe  src="static/pdfs/sample.pdf" width="100%" height="550">
-          </iframe>
-        
+<!--Data Construction Section-->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-2 has-text-centered">
+      <span class="persona-title" style="display: inline-flex; align-items: center; gap: 10px;">
+        <img src="static/images/personamem_icon.png" alt="PersonaMem Icon" style="width: 40px; height: 40px;">
+        <span><span class="highlight">P</span>ERSONA<span class="highlight">M</span>EM</span>
+      </span> Curation Pipeline
+    </h2>
+    
+    <div class="columns is-centered">
+      <div class="column is-10">
+        <figure class="image">
+          <img src="static/images/generate_data.png" alt="PersonaMem data curation pipeline">
+          <figcaption class="has-text-centered mt-2">
+            We construct user personas, build time-stamped general and topic-specific personal histories,
+            expand them into conversation sessions, and topologically concatenate sessions to create
+            long conversation contexts—resulting in a scalable generation framework.
+          </figcaption>
+        </figure>
       </div>
     </div>
-  </section>
-<!--End paper poster -->
-
+  </div>
+</section>
 
 <!--BibTex citation -->
   <section class="section" id="BibTeX">
@@ -375,7 +1215,6 @@
 </section>
 <!--End BibTex citation -->
 
-
   <footer class="footer">
   <div class="container">
     <div class="columns is-centered">
@@ -383,7 +1222,7 @@
         <div class="content">
 
           <p>
-            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
             You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
             Commons Attribution-ShareAlike 4.0 International License</a>.
           </p>
