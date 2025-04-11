@@ -25,7 +25,7 @@
 
 
   <title>Academic Project Page</title>
-  <link rel="icon" type="image/x-icon" href="static/images/personamem_icon.png"> <!-- TODO: change icon code to .ico-->
+  <link rel="icon" type="image/x-icon" href="static/images/personamem_icon.ico">
   <!-- Add your custom style section here, before other CSS links -->
   <style>
     .persona-title {
@@ -52,6 +52,20 @@
       -webkit-background-clip: text;
       background-clip: text;
       animation: gradientShift 8s ease infinite;
+    }
+    /* New styles for inline persona-title */
+    .persona-title[style*="display: inline"] .highlight,
+    .persona-title[style*="display: inline-flex"] .highlight {
+      color: inherit;
+      background: none;
+      animation: none;
+      font-weight: normal;
+    }
+    .persona-title[style*="display: inline"] span:not(.highlight),
+    .persona-title[style*="display: inline-flex"] span:not(.highlight) {
+      color: inherit;
+      background: none;
+      animation: none;
     }
     @keyframes gradientShift {
       0% { background-position: 0% 50%; }
@@ -228,7 +242,7 @@
                     </span>
                   </div>
 
-                  <!-- Equal contribution note -->
+                  <!-- Equal contribution note --> <!-- TODO: change paper pdf link to arXiv link-->
                   <div class="is-size-5 publication-authors">
                     <span class="author-block" style="font-size: 0.9em;">
                       <sup>*</sup>Equal Contribution &nbsp;&nbsp;&nbsp; <sup>†</sup>Equal Advising
@@ -238,7 +252,7 @@
                     <div class="publication-links">
                          <!-- Arxiv PDF link -->
                       <span class="link-block">
-                        <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank"
+                        <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank" 
                         class="external-link button is-normal is-rounded is-dark">
                         <span class="icon">
                           <i class="fas fa-file-pdf"></i>
@@ -252,7 +266,7 @@
                       <a href="https://huggingface.co/datasets/bowen-upenn/PersonaMem" target="_blank"
                       class="external-link button is-normal is-rounded is-dark">
                         <span class="icon">
-                          <i class="fab fa-hubspot"></i>
+                          <span style="font-size: 1.2em;">🤗</span>
                         </span>
                         <span>HF Dataset</span>
                       </a>
@@ -261,7 +275,7 @@
 
                   <!-- Github link -->
                   <span class="link-block">
-                    <a href="https://github.com/YOUR REPO HERE" target="_blank"
+                    <a href="https://github.com/bowen-upenn/PersonaMem" target="_blank"
                     class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="fab fa-github"></i>
@@ -270,7 +284,7 @@
                   </a>
                 </span>
 
-                <!-- ArXiv abstract Link -->
+                <!-- ArXiv abstract Link --> <!-- TODO: change paper pdf link to arXiv link-->
                 <span class="link-block">
                   <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank"
                   class="external-link button is-normal is-rounded is-dark">
@@ -278,6 +292,17 @@
                     <i class="ai ai-arxiv"></i>
                   </span>
                   <span>arXiv</span>
+                </a>
+              </span>
+
+              <!-- Twitter Link --><!-- TODO: change twitter link-->
+              <span class="link-block">
+                <a href="https://twitter.com/share?url=https://personamem.github.io" target="_blank"
+                class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                  <i class="fab fa-twitter"></i>
+                </span>
+                <span>Twitter</span>
                 </a>
               </span>
             </div>
@@ -288,41 +313,46 @@
   </div>
 </section>
 
-<!-- Teaser image-->
-<section class="hero teaser">
+<!-- Teaser section with more visual distinction -->
+<section class="hero teaser" style="background-color: #f8f9fa; border-radius: 8px; margin-top: 2rem;">
   <div class="container is-max-desktop">
     <div class="hero-body">
+      <!-- Question as hook -->
+      <p class="subtitle is-3" style="text-align: center; font-weight: 600; margin-bottom: 2.5rem;">
+        <span style="color: #FF8C00; text-shadow: 0px 0px 1px rgba(0,0,0,0.1);">🔍 Can LLMs leverage the past interaction history with a user to deliver personalized responses in real time? 🤔</span>
+      </p>
+      <!-- Introducing PERSONAMEM after the hook -->
       <h2 class="title is-2 has-text-centered mb-5">
-        What is 
-        <span class="persona-title" style="display: inline-flex; align-items: center; vertical-align: middle; gap: 10px;">
-          <img src="static/images/personamem_icon.png" alt="PersonaMem Icon" style="width: 40px; height: 40px; vertical-align: middle;">
-          <span style="vertical-align: middle; display: inline-flex; align-items: center;">
-            <span class="highlight" style="font-size: 2.4rem; line-height: 1; vertical-align: middle;">P</span><span style="font-size: 1.8rem; line-height: 1; vertical-align: middle;">ERSONA</span><span class="highlight" style="font-size: 2.4rem; line-height: 1; vertical-align: middle;">M</span><span style="font-size: 1.8rem; line-height: 1; vertical-align: middle;">EM</span>
-          </span>
-        </span>
-        <span style="vertical-align: middle;">?</span>
+        Introducing <span class="persona-title" style="display: inline;"><span class="highlight">P</span>ERSONA<span class="highlight">M</span>EM</span>
       </h2>
       <div class="content">
-        <p class="subtitle" style="text-align: left;">
-          PERSONAMEM is a benchmark used to study the three research questions:
-          <br>
-          1. <strong>User profiling</strong>: Can LLMs learn about users' traits and preferences from interaction histories?
-          <br>
-          2. <strong>Dynamic Tracking</strong>: Can LLMs recognize how user profiling and preferences evolve over time?
-          <br>
-          3. <strong>Personalized Response</strong>: Can LLMs generate personalized responses accordingly in new scenarios?
+        <p class="subtitle" style="text-align: left;">  
+          We present a comprehensive benchmark comprising over 
+          <span style="color: transparent; background: linear-gradient(45deg, #FF8C00, #FFA500); -webkit-background-clip: text; background-clip: text; font-weight: bold;">180+</span> 
+          simulated user-LLM interaction histories with up to 
+          <span style="color: transparent; background: linear-gradient(45deg, #4682B4, #5F9EA0); -webkit-background-clip: text; background-clip: text; font-weight: bold;">60</span> 
+          multi-turn sessions (~
+          <span style="color: transparent; background: linear-gradient(45deg, #4682B4, #5F9EA0); -webkit-background-clip: text; background-clip: text; font-weight: bold;">1M</span> 
+          tokens) across 
+          <span style="color: transparent; background: linear-gradient(45deg, #3CB371, #2E8B57); -webkit-background-clip: text; background-clip: text; font-weight: bold;">15</span> 
+          diverse personalized scenarios.
         </p>
       </div>
+      <!-- Rest of the content remains the same -->
       <div class="has-text-centered">
         <img src="static/images/personamem_overview.gif" alt="PersonaMem Overview: Animated demonstration showing user persona with static and dynamic profiles on the left, and evolving user preferences through chat interactions on the right" style="max-width: 100%; height: auto;">
       </div>
       <p class="subtitle" style="text-align: left; margin-top: 1em;">
-        The </strong>PersonaMem</strong> benchmark evaluates whether LLMs can <strong>infer evolving user profiles</strong> and </strong>generate personalized responses</strong> across tasks scenarios. Each benchmark instance features a <strong>user persona</strong>
+        Each benchmark instance features a <strong>user persona</strong>
           with static (e.g., demographic info.) and dynamic attributes (e.g., evolving preferences).
           Users engage with a chatbot in <strong>multi-session interactions</strong> across a variety of topics such as
-          food recommendation, travel planning, and therapy consultation. As the user's </strong>preferences
-          evolve over time</strong>, the benchmark offers annotated questions assessing whether LLMs can provide the most suitable response to <strong><em>in-situ</em> user queries</strong>,  where
-          users issue queries to LLMs from first-person perspectives. We present two types of user queries here. A complete list of the 7 types of <em>in-situ</em> user queries is provided afterward.
+          food recommendation, travel planning, and therapy consultation. As the user's <strong>preferences
+          evolve over time</strong>, the benchmark offers annotated questions assessing whether LLMs can provide the most suitable response to <strong><em>in-situ</em> user queries</strong>, where
+          users issue queries to LLMs from first-person perspectives. 
+      </p>
+      
+      <p class="subtitle" style="text-align: left; font-style: italic; margin-top: 0.5em;">
+        We present two types of user queries here. The complete list of all 7 types of <em>in-situ</em> user queries can be found in the <a href="#evaluation-tasks">table below</a>.
       </p>
     </div>
   </div>
@@ -332,8 +362,8 @@
 <!-- Leaderboard Section -->
 <section class="section">
   <div class="container" style="max-width: 90%; margin: auto;">
-    <h2 class="title is-3 has-text-centered">Leaderboard</h2>
-    <h3 class="title is-3 has-text-centered">Model Performance by Query Types</h3>
+    <h2 class="title is-2 has-text-centered">Leaderboard</h2>
+    <h3 class="title is-3 has-text-centered" style="color: #4682B4;">Model Performance by Query Types</h3>
     <p class="has-text-centered mb-4">
       Evaluation results across different models on 7 <em>in-situ</em> query types.
     </p>
@@ -367,7 +397,7 @@
             <td>0.79</td>
             <td>0.75</td>
             <td>0.77</td>
-            <td class="has-background-success-light">0.83</td>
+            <td>0.83</td>
             <td>0.77</td>
             <td>0.76</td>
             <td>0.70</td>
@@ -505,11 +535,10 @@
 <!-- Long Context Performance Section (moved here from below) -->
 <section class="section">
   <div class="container" style="max-width: 90%; margin: auto;">
-    <h2 class="title is-3 has-text-centered">Model Performance by Session Count</h2>
+    <h2 class="title is-3 has-text-centered" style="color: #4682B4;">Model Performance by Session Count</h2>
     <p class="has-text-centered mb-4">
       Model performances by number of sessions elapsed since most recent preferences
-      were mentioned in long context. The results for up to 20 sessions/128k tokens is presented here. We have the results for up to 60
-      sessions/1M tokens afterward.
+      were mentioned in long context (up to 20 sessions/128k tokens).
     </p>
     <div class="table-container" style="overflow-x: auto;">
       <table class="table is-fullwidth is-hoverable">
@@ -544,47 +573,47 @@
             <td>Gemini-1.5-Flash</td>
             <td class="has-background-success-light">0.52</td>
             <td>0.74</td>
-            <td>0.56</td>
+            <td class="has-background-success-light">0.56</td>
             <td>0.53</td>
             <td>0.54</td>
             <td>0.50</td>
             <td>0.47</td>
             <td>0.49</td>
-            <td>0.51</td>
-            <td>0.53</td>
-            <td>0.50</td>
-            <td>0.49</td>
-            <td>0.42</td>
-            <td>0.54</td>
+            <td class="has-background-success-light">0.51</td>
+            <td class="has-background-success-light">0.53</td>
+            <td class="has-background-success-light">0.50</td>
+            <td class="has-background-success-light">0.49</td>
+            <td class="has-background-success-light">0.42</td>
+            <td class="has-background-success-light">0.54</td>
             <td>0.48</td>
-            <td>0.44</td>
+            <td class="has-background-success-light">0.44</td>
             <td>0.53</td>
             <td>0.65</td>
             <td>0.57</td>
             <td>0.48</td>
-            <td>0.48</td>
+            <td class="has-background-success-light">0.48</td>
           </tr>
           <tr>
             <td>GPT-4.5</td>
             <td class="has-background-success-light">0.52</td>
             <td>0.74</td>
             <td>0.53</td>
-            <td>0.57</td>
-            <td>0.56</td>
-            <td>0.54</td>
-            <td>0.52</td>
-            <td>0.50</td>
+            <td class="has-background-success-light">0.57</td>
+            <td class="has-background-success-light">0.56</td>
+            <td class="has-background-success-light">0.54</td>
+            <td class="has-background-success-light">0.52</td>
+            <td class="has-background-success-light">0.50</td>
             <td>0.44</td>
             <td>0.52</td>
             <td>0.46</td>
             <td>0.46</td>
             <td>0.41</td>
             <td>0.52</td>
-            <td>0.53</td>
+            <td class="has-background-success-light">0.53</td>
             <td>0.36</td>
             <td>0.48</td>
-            <td>0.68</td>
-            <td>0.65</td>
+            <td class="has-background-success-light">0.68</td>
+            <td class="has-background-success-light">0.65</td>
             <td>0.48</td>
             <td>0.42</td>
           </tr>
@@ -592,10 +621,10 @@
             <td>o1</td>
             <td>0.50</td>
             <td>0.68</td>
-            <td>0.56</td>
+            <td class="has-background-success-light">0.56</td>
             <td>0.54</td>
             <td>0.49</td>
-            <td>0.54</td>
+            <td class="has-background-success-light">0.54</td>
             <td>0.45</td>
             <td>0.48</td>
             <td>0.46</td>
@@ -633,7 +662,7 @@
             <td>0.46</td>
             <td>0.61</td>
             <td>0.51</td>
-            <td>0.52</td>
+            <td class="has-background-success-light">0.52</td>
             <td>0.42</td>
           </tr>
           <tr>
@@ -654,7 +683,7 @@
             <td>0.44</td>
             <td>0.47</td>
             <td>0.44</td>
-            <td>0.56</td>
+            <td class="has-background-success-light">0.56</td>
             <td>0.63</td>
             <td>0.53</td>
             <td>0.50</td>
@@ -663,7 +692,7 @@
           <tr>
             <td>GPT-4o</td>
             <td>0.45</td>
-            <td class="has-background-success-light">0.83</td>
+            <td>0.83</td>
             <td>0.51</td>
             <td>0.55</td>
             <td>0.44</td>
@@ -908,34 +937,33 @@
       <h4 class="title is-5">Key Findings:</h4>
       <ul style="text-align: left; display: inline-block;">
         <li>• GPT-4.5 and Gemini-1.5 achieve the highest overall performance.</li>
-        <li>• The model performs better when the relevant information appears in the earlier or later sessions of the conversation history. It echoes the "lost-in-the-middle" effect in long-context setting.</li>
+        <li>• The model performs better when the relevant information appears in the earlier or later sessions of the conversation history.</li>
       </ul>
     </div>
   </div>
 </section>
 <!-- End Long Context Performance Section -->
-
 <!-- Paper Contribution Section -->
-<section class="section hero" style="background-color: #fffaea;">
+<section class="section hero" style="padding-top: 1rem;">
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column">
-        <h2 class="title is-3 has-text-centered">Our Contributions</h2>
-        <div class="content">
+        <div class="content" style="background-color: #fffaea; padding: 20px; border-radius: 8px;">
+          <h2 class="title is-3 has-text-centered">Contributions</h2>
           <ul class="is-size-5" style="line-height: 1.7;">
-            <li>• We propose the <span class="persona-title" style="display: inline-flex; align-items: center; gap: 5px;">
+            <li>We propose the <span class="persona-title" style="display: inline-flex; align-items: center; gap: 5px;">
               <span><span class="highlight">P</span>ERSONA<span class="highlight">M</span>EM</span>
-            </span> benchmark and its synthetic dialog generation pipeline for persona-oriented, multi-session, and timelined user-chatbot interaction history.</li>
-            <li>• We assess 13 LLMs on 7 types of in-situ user queries and evaluate their ability to provide responses aligned with user's dynamically changing profile across 15 task scenarios.</li>
-            <li>• With <span class="persona-title" style="display: inline-flex; align-items: center; gap: 5px;">
-              <span><span class="highlight">P</span>ERSONA<span class="highlight">M</span>EM</span>
-            </span>, we observe that frontier models such as GPT-4.5, o1, DeepSeek-R1, Gemini-2.0, Llama-4 still struggle to be user-aware and deliver personalized responses, especially when the knowledge of the user needs to be applied across new scenarios.</li>
+            </span> benchmark and its synthetic dialog generation pipeline for <strong>persona-oriented</strong>, <strong>multi-session</strong>, and <strong>timelined</strong> user-chatbot interaction history.</li>
+            <li>We assess <strong>13 LLMs</strong> on <strong>7 types of in-situ user queries</strong> and evaluate their ability to provide responses aligned with user's dynamically changing profile across <strong>15 task scenarios</strong>.</li>
+            <li>We observe that frontier models such as GPT-4.5, o1, DeepSeek-R1, Gemini-2.0, Llama-4 still <strong>struggle</strong> to be user-aware and deliver personalized responses, especially when the knowledge of the user needs to be applied across <strong>new scenarios</strong>.</li>
           </ul>
         </div>
       </div>
     </div>
   </div>
 </section>
+<!-- Grey division line -->
+<div style="width: 100%; height: 1px; background-color: #e0e0e0; margin: 20px 0;"></div>
 
 <!-- Paper abstract -->
 <section class="section hero is-light">
@@ -964,14 +992,13 @@
   <div class="container is-max-desktop">
     <h2 class="title is-2 has-text-centered">
       <span class="persona-title" style="display: inline-flex; align-items: center; gap: 10px;">
-        <img src="static/images/personamem_icon.png" alt="PersonaMem Icon" style="width: 40px; height: 40px;">
         <span>Overview of <span class="highlight">P</span>ERSONA<span class="highlight">M</span>EM</span>
       </span>
     </h2>
 
     <!-- Evaluation Tasks Subsection -->
-    <div class="content mt-5">
-      <h3 class="title is-3">Evaluation Tasks</h3>
+    <div class="content mt-5" id="evaluation-tasks">
+      <h3 class="title is-3 has-text-centered">Evaluation Tasks</h3>
       <div class="columns is-centered">
         <div class="column is-10">
           <p>
@@ -988,41 +1015,41 @@
             </span> benchmark.
           </p>
           <!-- Insert table here -->
-          <div class="table-container" style="margin: 2em auto; width: 100%;">
-            <table class="table is-bordered is-striped is-narrow is-hoverable">
+          <div class="table-container" style="margin: 2em auto; width: 100%; max-width: 1200px;">
+            <table class="table is-bordered is-striped is-narrow is-hoverable" style="width: 100%;">
               <thead>
                 <tr>
-                  <th style="width: 300px;">Query type</th>
-                  <th>Examples of <em>in-situ</em> user queries and chatbot responses</th>
+                  <th style="width: 30%;">Query type</th>
+                  <th style="width: 70%;">Examples of <em>in-situ</em> user queries and chatbot responses</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td style="font-weight: bold; color: #0066cc; white-space: nowrap;">[1] Recall user-shared facts</td>
+                  <td style="font-weight: bold; color: #0066cc; white-space: normal;">[1] Recall user-shared facts</td>
                   <td style="white-space: normal; word-wrap: break-word;"><em>"User: I shared my <span style="background-color: #bcde94;">playlist</span> with my friends and they loved it. ...... (later) User: What are some creative ways to share music? --- Chatbot: Curating personalized <span style="background-color: #bcde94;">playlists</span> can be fun."</em></td>
                 </tr>
                 <tr>
-                  <td style="font-weight: bold; color: #0066cc; white-space: nowrap;">[2] Suggest new ideas</td>
+                  <td style="font-weight: bold; color: #0066cc; white-space: normal;">[2] Suggest new ideas</td>
                   <td style="white-space: normal; word-wrap: break-word;"><em>"User: ...... (later) User: Suggest new restaurant I <span style="background-color: #bcde94;">haven't</span> ordered before."</em></td>
                 </tr>
                 <tr>
-                  <td style="font-weight: bold; color: #0066cc; white-space: nowrap;">[3] Acknowledge latest user preferences</td>
+                  <td style="font-weight: bold; color: #0066cc; white-space: normal;">[3] Acknowledge latest user preferences</td>
                   <td style="white-space: normal; word-wrap: break-word;"><em>"User: I am a big fan of <span style="background-color: #ffa39b;">Italian</span> food. ...... (later) User: I prefer <span style="background-color: #bcde94;">Mediterranean</span> cuisine now. ... (later) User: I went to an Italian restaurant yesterday --- Chatbot: Nice to hear! Though I thought you prefer <span style="background-color: #bcde94;">Mediterranean</span> food now."</em></td>
                 </tr>
                 <tr>
-                  <td style="font-weight: bold; color: #0066cc; white-space: nowrap;">[4] Track full preference evolution</td>
+                  <td style="font-weight: bold; color: #0066cc; white-space: normal;">[4] Track full preference evolution</td>
                   <td style="white-space: normal; word-wrap: break-word;"><em>"User: ...... (later) User: I am thinking about attending a cooking class. --- Chatbot: I understand your perspective on cooking classes has evolved. Initially, you expressed a <span style="background-color: #ffa39b;">dislike</span>, but later you mentioned your <span style="background-color: #bcde94;">interest</span> in them."</em></td>
                 </tr>
                 <tr>
-                  <td style="font-weight: bold; color: #0066cc; white-space: nowrap;">[5] Revisit reasons behind preference updates</td>
+                  <td style="font-weight: bold; color: #0066cc; white-space: normal;">[5] Revisit reasons behind preference updates</td>
                   <td style="white-space: normal; word-wrap: break-word;"><em>"User: I am a big fan of Italian food. ...... (later) User: I recently found I'm <span style="background-color: #bcde94;">allergic to gluten</span>, so I've shifted to other dishes. ... (later) User: I went to an Italian restaurant yesterday --- Chatbot: How's your <span style="background-color: #bcde94;">allergy</span> been? I guess they must have a <span style="background-color: #bcde94;">gluten-free</span> pizza."</em></td>
                 </tr>
                 <tr>
-                  <td style="font-weight: bold; color: #0066cc; white-space: nowrap;">[6] Provide preference aligned recommendations</td>
+                  <td style="font-weight: bold; color: #0066cc; white-space: normal;">[6] Provide preference aligned recommendations</td>
                   <td style="white-space: normal; word-wrap: break-word;"><em>"User: I prefer <span style="background-color: #bcde94;">Mediterranean</span> seafood now. ...... (later) User: How can I make impactful lifestyle changes? --- Chatbot: How about diving into the <span style="background-color: #bcde94;">Mediterranean</span> diet plan?"</em></td>
                 </tr>
                 <tr>
-                  <td style="font-weight: bold; color: #0066cc; white-space: nowrap;">[7] Generalize to new scenarios</td>
+                  <td style="font-weight: bold; color: #0066cc; white-space: normal;">[7] Generalize to new scenarios</td>
                   <td style="white-space: normal; word-wrap: break-word;"><em>"User: I prefer my yoga class because of its <span style="background-color: #bcde94;">fixed weekly schedule</span>. ...... (later) User: I recently haven't had time to cook. --- Chatbot: Since you seem to love <span style="background-color: #bcde94;">routine</span> would you be interested in weekly scheduled bento-box deliveries?"</em></td>
                 </tr>
               </tbody>
@@ -1034,7 +1061,7 @@
 
     <!-- Benchmark Data Statistics Subsection -->
     <div class="content mt-5">
-      <h3 class="title is-3">Benchmark Data Statistics</h3>
+      <h3 class="title is-3 has-text-centered">Benchmark Data Statistics</h3>
       <div class="columns is-centered">
         <div class="column is-10">
           <div class="columns is-multiline">
@@ -1088,7 +1115,7 @@
                     <p class="is-size-5 has-text-weight-bold mb-2">Long</p>
                     <p class="is-size-4 has-text-weight-bold has-text-danger mb-1">60</p>
                     <p class="is-size-6 mb-0">sessions</p>
-                    <p class="is-size-6 has-text-grey">~</strong>1M</strong> tokens</p>
+                    <p class="is-size-6 has-text-grey">~<strong>1M</strong> tokens</p>
                   </div>
                 </div>
               </div>
@@ -1135,7 +1162,7 @@
         <div class="column is-10">
           <figure class="image">
             <img src="static/images/results_length_1m.png" alt="Performance on ultra-long context up to 60 sessions/1M tokens">
-            <figcaption class="has-text-centered mt-2">
+            <figcaption class="has-text-centered mt-2" style="font-style: normal;">
               We observe similar patterns of the position of user information in interaction history compared to the 32k token length results.
             </figcaption>
           </figure>
@@ -1145,19 +1172,13 @@
     
     <!-- RAG and MemO Results -->
     <div class="content mt-5">
-      <h3 class="title is-4 has-text-centered">Comparison of Direct Prompting vs. RAG vs. MemO</h3>
+      <h3 class="title is-4 has-text-centered">Comparison of Direct Prompting vs. RAG vs. <a href="https://mem0.ai/">Mem0</a></h3>
       <div class="columns is-centered">
         <div class="column is-10">
           <figure class="image">
             <img src="static/images/rag_mem0_32k.png" alt="Comparison of direct prompting vs. RAG vs. memory optimization approaches">
-            <figcaption class="has-text-centered mt-2">
-              We evaluate whether using a retriever to identify relevant information in the history will help
-              improve model's performance. We evaluate two external memory approaches—RAG and MemO—against vanilla LLMs. For these experiments, we
-              consider only the GPT-4o and GPT-4o-mini models. Overall, external
-              memory modules significantly improve accuracy for both models. Notably, <em>Recall User-
-              Shared Facts</em> and <em>Generalize to New Scenarios</em> benefit the most, highlighting the effectiveness of
-              retrieval in factual tasks. In contrast, <em>Revisit Reasons Behind Preference Updates</em> shows smaller
-              gains.
+            <figcaption class="has-text-centered mt-2" style="font-style: normal;">
+              External memory approaches (RAG and Mem0) significantly outperform vanilla LLMs (GPT-4o and GPT-4o-mini). Recall User-Shared Facts and Generalize to New Scenarios show the largest improvements, while Revisit Reasons Behind Preference Updates benefits less from retrieval-based methods.
             </figcaption>
           </figure>
         </div>
@@ -1170,8 +1191,8 @@
       <div class="columns is-centered">
         <div class="column is-10">
           <figure class="image">
-            <img src="static/images/results_generative.png" alt="Performance of generative models across different query types">
-            <figcaption class="has-text-centered mt-2">
+            <img src="static/images/results_generative.png" alt="Performance of generative models across different query types" style="width: 80%; max-width: 800px; margin: 0 auto; display: block;">
+            <figcaption class="has-text-centered mt-2" style="font-style: normal;">
               In real-world scenarios, chatbots don't have access to multiple response options during inference. We evaluate models in generative settings, where the best response is selected using <strong>joint sequence probability</strong> from model predictions. Results follow similar trends to our discriminative evaluation across query types. Interestingly, LLama-3.1-8B-instruct performs better in generative settings, suggesting it can provide personalized responses without seeing all candidate options.
             </figcaption>
           </figure>
@@ -1186,7 +1207,6 @@
   <div class="container is-max-desktop">
     <h2 class="title is-2 has-text-centered">
       <span class="persona-title" style="display: inline-flex; align-items: center; gap: 10px;">
-        <img src="static/images/personamem_icon.png" alt="PersonaMem Icon" style="width: 40px; height: 40px;">
         <span><span class="highlight">P</span>ERSONA<span class="highlight">M</span>EM</span>
       </span> Curation Pipeline
     </h2>
@@ -1206,7 +1226,7 @@
   </div>
 </section>
 
-<!--BibTex citation -->
+<!--BibTex citation --><!--TODO: add citation -->
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <h2 class="title">BibTeX</h2>
