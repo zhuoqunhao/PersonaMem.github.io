@@ -252,7 +252,7 @@
                     <div class="publication-links">
                          <!-- Arxiv PDF link -->
                       <span class="link-block">
-                        <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank" 
+                        <a href="https://arxiv.org/pdf/2504.14225" target="_blank" 
                         class="external-link button is-normal is-rounded is-dark">
                         <span class="icon">
                           <i class="fas fa-file-pdf"></i>
@@ -286,7 +286,7 @@
 
                 <!-- ArXiv abstract Link --> <!-- TODO: change paper pdf link to arXiv link-->
                 <span class="link-block">
-                  <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank"
+                  <a href="https://arxiv.org/abs/2504.14225" target="_blank"
                   class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                     <i class="ai ai-arxiv"></i>
@@ -295,7 +295,7 @@
                 </a>
               </span>
 
-              <!-- Twitter Link --><!-- TODO: change twitter link-->
+              <!-- Twitter Link --><!-- TODO: change twitter link
               <span class="link-block">
                 <a href="https://twitter.com/share?url=https://personamem.github.io" target="_blank"
                 class="external-link button is-normal is-rounded is-dark">
@@ -303,6 +303,7 @@
                   <i class="fab fa-twitter"></i>
                 </span>
                 <span>Twitter</span>
+                -->
                 </a>
               </span>
             </div>
@@ -313,14 +314,17 @@
   </div>
 </section>
 
+<!-- Question as hook outside the teaser section -->
+<div class="container is-max-desktop" style="margin-top: 0.5rem; margin-bottom: 1rem;">
+  <p class="subtitle is-3" style="text-align: center; font-weight: 600;">
+    <span style="color: #FF8C00; text-shadow: 0px 0px 1px rgba(0,0,0,0.1);">🔍 Can LLMs leverage the past interaction history with a user to deliver personalized responses in real time? 🤔</span>
+  </p>
+</div>
+
 <!-- Teaser section with more visual distinction -->
-<section class="hero teaser" style="background-color: #f8f9fa; border-radius: 8px; margin-top: 2rem;">
+<section class="hero teaser" style="background-color: #f8f9fa; border-radius: 8px;">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <!-- Question as hook -->
-      <p class="subtitle is-3" style="text-align: center; font-weight: 600; margin-bottom: 2.5rem;">
-        <span style="color: #FF8C00; text-shadow: 0px 0px 1px rgba(0,0,0,0.1);">🔍 Can LLMs leverage the past interaction history with a user to deliver personalized responses in real time? 🤔</span>
-      </p>
       <!-- Introducing PERSONAMEM after the hook -->
       <h2 class="title is-2 has-text-centered mb-5">
         Introducing <span class="persona-title" style="display: inline;"><span class="highlight">P</span>ERSONA<span class="highlight">M</span>EM</span>
@@ -335,7 +339,9 @@
           <span style="color: transparent; background: linear-gradient(45deg, #4682B4, #5F9EA0); -webkit-background-clip: text; background-clip: text; font-weight: bold;">1M</span> 
           tokens) across 
           <span style="color: transparent; background: linear-gradient(45deg, #3CB371, #2E8B57); -webkit-background-clip: text; background-clip: text; font-weight: bold;">15</span> 
-          diverse personalized scenarios.
+          diverse personalized scenarios with 
+          <span style="color: transparent; background: linear-gradient(45deg, #b33ca5, #862e8b); -webkit-background-clip: text; background-clip: text; font-weight: bold;">7</span> 
+          types of <em>in-situ</em> user query tasks.
         </p>
       </div>
       <!-- Rest of the content remains the same -->
@@ -374,16 +380,18 @@
             <th>Query Type \ Model</th>
             <th>Gemini<br>1.5-Flash</th>
             <th>GPT-4.5</th>
-            <th>Gemini<br>2.0-Flash</th>
+            <th>GPT-4.1</th>
             <th>o1</th>
+            <th>Gemini<br>2.0-Flash</th>
+            <th>o4-mini</th>
             <th>Gemini<br>2.0-Flash-Lite</th>
-            <th>DeepSeek<br>R1-671B</th>
             <th>GPT-4o</th>
+            <th>DeepSeek<br>R1-671B</th>
             <th>Llama<br>4-Maverick</th>
-            <th>GPT<br>4o-mini</th>
             <th>o3-mini</th>
-            <th>Claude<br>3.5-Haiku</th>
+            <th>GPT<br>4o-mini</th>
             <th>Llama<br>3.1-405B</th>
+            <th>Claude<br>3.5-Haiku</th>
             <th>Claude<br>3.7-Sonnet</th>
             <th>Average</th>
             <th>Random<br>Guess</th>
@@ -394,126 +402,160 @@
             <td>Revisit Reasons Behind Preference Updates</td>
             <td>0.77</td>
             <td>0.76</td>
-            <td>0.79</td>
+            <td class="has-background-success-light">0.84</td>
             <td>0.75</td>
+            <td>0.79</td> 
+            <td>0.75</td>           
+            <td>0.77</td>
             <td>0.77</td>
             <td>0.83</td>
-            <td>0.77</td>
             <td>0.76</td>
-            <td>0.70</td>
             <td>0.72</td>
-            <td>0.64</td>
+            <td>0.70</td>
             <td>0.41</td>
+            <td>0.64</td>
             <td>0.57</td>
-            <td>0.71</td>
+            <td>0.72</td>
             <td>0.25</td>
           </tr>
           <tr>
             <td>Tracking Full Preference Evolution</td>
             <td>0.65</td>
             <td>0.68</td>
-            <td class="has-background-success-light">0.70</td>
             <td>0.67</td>
+            <td>0.67</td>
+            <td>0.70</td>
+            <td class="has-background-success-light">0.73</td>
             <td>0.68</td>
             <td>0.68</td>
             <td>0.68</td>
             <td>0.66</td>
-            <td>0.60</td>
             <td>0.54</td>
-            <td>0.55</td>
+            <td>0.60</td>
             <td>0.38</td>
+            <td>0.55</td>
             <td>0.45</td>
-            <td>0.61</td>
+            <td>0.62</td>
             <td>0.25</td>
           </tr>
           <tr>
             <td>Recall User Shared Facts</td>
             <td>0.54</td>
-            <td class="has-background-success-light">0.61</td>
+            <td>0.61</td>
+            <td class="has-background-success-light">0.65</td>
             <td>0.50</td>
             <td>0.50</td>
+            <td>0.42</td>
             <td>0.49</td>
-            <td>0.43</td>
             <td>0.41</td>
+            <td>0.43</td>
             <td>0.37</td>
-            <td>0.55</td>
             <td>0.47</td>
-            <td>0.29</td>
+            <td>0.55</td>
             <td>0.38</td>
+            <td>0.29</td>
             <td>0.25</td>
-            <td>0.44</td>
+            <td>0.46</td>
             <td>0.25</td>
           </tr>
           <tr>
             <td>Acknowledge Latest User Preference</td>
             <td class="has-background-success-light">0.59</td>
             <td>0.55</td>
-            <td>0.52</td>
+            <td>0.50</td>
             <td>0.54</td>
+            <td>0.52</td>
+            <td>0.55</td>            
             <td>0.51</td>
-            <td>0.42</td>
             <td>0.46</td>
-            <td>0.43</td>
-            <td>0.34</td>
-            <td>0.39</td>
-            <td>0.27</td>
-            <td>0.31</td>
-            <td>0.09</td>
             <td>0.42</td>
+            <td>0.43</td>
+            <td>0.39</td>
+            <td>0.34</td>
+            <td>0.31</td>
+            <td>0.27</td>
+            <td>0.09</td>
+            <td>0.43</td>
             <td>0.25</td>
           </tr>
           <tr>
             <td>Provide Preference Aligned Recommendations</td>
-            <td class="has-background-success-light">0.55</td>
+            <td>0.55</td>
             <td>0.44</td>
+            <td class="has-background-success-light">0.57</td>
+            <td>0.42</td>
             <td>0.51</td>
-            <td>0.42</td>
+            <td>0.41</td>
             <td>0.52</td>
+            <td>0.37</td>
             <td>0.49</td>
-            <td>0.37</td>
             <td>0.42</td>
             <td>0.41</td>
             <td>0.41</td>
+            <td>0.37</td>
             <td>0.32</td>
-            <td>0.37</td>
             <td>0.20</td>
-            <td>0.42</td>
+            <td>0.43</td>
             <td>0.25</td>
           </tr>
           <tr>
             <td>Generalize Reasons to New Scenarios</td>
             <td class="has-background-success-light">0.54</td>
             <td>0.46</td>
-            <td>0.46</td>
+            <td>0.53</td>
             <td>0.39</td>
+            <td>0.46</td>
+            <td>0.38</td>
             <td>0.33</td>
+            <td>0.32</td>
             <td>0.38</td>
             <td>0.32</td>
-            <td>0.32</td>
-            <td>0.33</td>
             <td>0.30</td>
-            <td>0.20</td>
+            <td>0.33</td>
             <td>0.21</td>
+            <td>0.20</td>
             <td>0.29</td>
-            <td>0.35</td>
+            <td>0.36</td>
             <td>0.25</td>
           </tr>
           <tr>
             <td>Suggest New Ideas</td>
             <td>0.15</td>
-            <td>0.27</td>
-            <td>0.15</td>
+            <td class="has-background-success-light">0.27</td>
+            <td>0.19</td>
             <td>0.25</td>
-            <td>0.16</td>
+            <td>0.15</td>
+            <td>0.17</td>
             <td>0.16</td>
             <td>0.24</td>
+            <td>0.16</td>
             <td>0.20</td>
-            <td>0.10</td>
             <td>0.11</td>
-            <td>0.06</td>
+            <td>0.10</td>
             <td>0.20</td>
-            <td class="has-background-success-light">0.28</td>
+            <td>0.06</td>
+            <td>0.28</td>
             <td>0.18</td>
+            <td>0.25</td>
+          </tr>
+          <tr>
+            <td>Overall Accuracy</td>
+            <td class="has-background-success-light">0.52</td>
+            <td class="has-background-success-light">0.52</td>
+            <td class="has-background-success-light">0.52</td>
+            <td>0.50</td>
+            <td>0.49</td>
+            <td>0.48</td>
+            <td>0.48</td>
+            <td>0.45</td>
+            <td>0.45</td>
+            <td>0.43</td>
+            <td>0.39</td>
+            <td>0.39</td>
+            <td>0.31</td>
+            <td>0.30</td>
+            <td>0.26</td>
+            <td>0.43</td>
             <td>0.25</td>
           </tr>
         </tbody>
@@ -523,9 +565,13 @@
     <div class="has-text-centered mt-4">
       <h4 class="title is-5">Key Findings:</h4>
       <ul style="text-align: left; display: inline-block;">
-        <li>• LLMs demonstrate reasonably good performance in recalling simple user facts.</li>
+        <li>• Gemini-1.5, GPT-4.5, and GPT-4.1 lead in overall accuracy, but still hover around 52% on multiple-choice.</li>
+        <li>• Reasoning models (o4-mini, o1, and DeepSeek-R1) do not outperform their non-reasoning peers.</li>
+        <li>• LLMs recall basic facts and preferences fine -- but struggle to apply your latest preferences in their responses.</li>
+        <!--LLMs demonstrate reasonably good performance in recalling simple user facts.
         <li>• Incorporating the latest user preference into responses is more challenging than recalling the change in user profile.</li>
         <li>• Models fall short on generating new ideas or providing suggestions in new scenarios.</li>
+      -->
       </ul>
     </div>
   </div>
@@ -544,7 +590,7 @@
       <table class="table is-fullwidth is-hoverable">
         <thead>
           <tr>
-            <th>Model \ Num Sessions</th>
+            <th>Model \ Num of Sessions</th>
             <th>Overall</th>
             <th>1</th>
             <th>2</th>
@@ -579,14 +625,14 @@
             <td>0.50</td>
             <td>0.47</td>
             <td>0.49</td>
-            <td class="has-background-success-light">0.51</td>
+            <td>0.51</td>
             <td class="has-background-success-light">0.53</td>
             <td class="has-background-success-light">0.50</td>
             <td class="has-background-success-light">0.49</td>
-            <td class="has-background-success-light">0.42</td>
+            <td>0.42</td>
             <td class="has-background-success-light">0.54</td>
             <td>0.48</td>
-            <td class="has-background-success-light">0.44</td>
+            <td>0.44</td>
             <td>0.53</td>
             <td>0.65</td>
             <td>0.57</td>
@@ -598,10 +644,10 @@
             <td class="has-background-success-light">0.52</td>
             <td>0.74</td>
             <td>0.53</td>
-            <td class="has-background-success-light">0.57</td>
+            <td>0.57</td>
             <td class="has-background-success-light">0.56</td>
             <td class="has-background-success-light">0.54</td>
-            <td class="has-background-success-light">0.52</td>
+            <td>0.52</td>
             <td class="has-background-success-light">0.50</td>
             <td>0.44</td>
             <td>0.52</td>
@@ -616,6 +662,30 @@
             <td class="has-background-success-light">0.65</td>
             <td>0.48</td>
             <td>0.42</td>
+          </tr>
+          <tr>
+            <td>GPT-4.1</td>
+            <td class="has-background-success-light">0.52</td>
+            <td class="has-background-success-light">0.87</td>
+            <td class="has-background-success-light">0.56</td>
+            <td class="has-background-success-light">0.60</td>
+            <td>0.53</td>
+            <td>0.52</td>
+            <td class="has-background-success-light">0.56</td>
+            <td>0.49</td>
+            <td class="has-background-success-light">0.53</td>
+            <td>0.43</td>
+            <td>0.44</td>
+            <td>0.47</td>
+            <td class="has-background-success-light">0.46</td>
+            <td>0.43</td>
+            <td>0.44</td>
+            <td>0.44</td>
+            <td>0.54</td>
+            <td>0.64</td>
+            <td>0.57</td>
+            <td>0.49</td>
+            <td>0.44</td>
           </tr>
           <tr>
             <td>o1</td>
@@ -664,6 +734,30 @@
             <td>0.51</td>
             <td class="has-background-success-light">0.52</td>
             <td>0.42</td>
+          </tr>
+          <tr>
+            <td>o4-mini</td>
+            <td>0.48</td>
+            <td>0.82</td>
+            <td>0.49</td>
+            <td>0.46</td>
+            <td>0.51</td>
+            <td>0.46</td>
+            <td>0.43</td>
+            <td>0.43</td>
+            <td>0.42</td>
+            <td>0.39</td>
+            <td>0.39</td>
+            <td>0.39</td>
+            <td>0.45</td>
+            <td>0.45</td>
+            <td>0.48</td>
+            <td class="has-background-success-light">0.44</td>
+            <td>0.46</td>
+            <td>0.65</td>
+            <td>0.52</td>
+            <td>0.50</td>
+            <td>0.45</td>
           </tr>
           <tr>
             <td>Gemini-2.0-Flash-Lite</td>
@@ -716,13 +810,13 @@
           <tr>
             <td>DeepSeek-R1-671B</td>
             <td>0.45</td>
-            <td class="has-background-success-light">0.84</td>
-            <td>0.56</td>
+            <td>0.84</td>
+            <td class="has-background-success-light">0.56</td>
             <td>0.51</td>
             <td>0.49</td>
             <td>0.50</td>
             <td>0.47</td>
-            <td>0.50</td>
+            <td class="has-background-success-light">0.50</td>
             <td>0.45</td>
             <td>0.41</td>
             <td>0.28</td>
@@ -883,27 +977,27 @@
           </tr>
           <tr>
             <td>Average</td>
-            <td>0.42</td>
-            <td>0.72</td>
-            <td>0.45</td>
-            <td>0.47</td>
             <td>0.43</td>
-            <td>0.40</td>
-            <td>0.40</td>
-            <td>0.40</td>
-            <td>0.39</td>
-            <td>0.39</td>
-            <td>0.34</td>
-            <td>0.35</td>
-            <td>0.35</td>
-            <td>0.41</td>
-            <td>0.36</td>
-            <td>0.34</td>
-            <td>0.43</td>
-            <td>0.59</td>
+            <td>0.74</td>
+            <td>0.46</td>
             <td>0.48</td>
-            <td>0.42</td>
+            <td>0.44</td>
+            <td>0.41</td>
+            <td>0.41</td>
+            <td>0.41</td>
+            <td>0.40</td>
+            <td>0.39</td>
+            <td>0.35</td>
             <td>0.36</td>
+            <td>0.36</td>
+            <td>0.41</td>
+            <td>0.38</td>
+            <td>0.36</td>
+            <td>0.44</td>
+            <td>0.60</td>
+            <td>0.49</td>
+            <td>0.43</td>
+            <td>0.37</td>
           </tr>
           <tr>
             <td>Random Guess</td>
@@ -936,7 +1030,7 @@
     <div class="has-text-centered mt-4">
       <h4 class="title is-5">Key Findings:</h4>
       <ul style="text-align: left; display: inline-block;">
-        <li>• GPT-4.5 and Gemini-1.5 achieve the highest overall performance.</li>
+        <li>• GPT-4.5, GPT-4.1, and Gemini-1.5 achieve the highest overall performance.</li>
         <li>• The model performs better when the relevant information appears in the earlier or later sessions of the conversation history.</li>
       </ul>
     </div>
@@ -954,8 +1048,8 @@
             <li>We propose the <span class="persona-title" style="display: inline-flex; align-items: center; gap: 5px;">
               <span><span class="highlight">P</span>ERSONA<span class="highlight">M</span>EM</span>
             </span> benchmark and its synthetic dialog generation pipeline for <strong>persona-oriented</strong>, <strong>multi-session</strong>, and <strong>timelined</strong> user-chatbot interaction history.</li>
-            <li>We assess <strong>13 LLMs</strong> on <strong>7 types of in-situ user queries</strong> and evaluate their ability to provide responses aligned with user's dynamically changing profile across <strong>15 task scenarios</strong>.</li>
-            <li>We observe that frontier models such as GPT-4.5, o1, DeepSeek-R1, Gemini-2.0, Llama-4 still <strong>struggle</strong> to be user-aware and deliver personalized responses, especially when the knowledge of the user needs to be applied across <strong>new scenarios</strong>.</li>
+            <li>We assess <strong>15 LLMs</strong> on <strong>7 types of in-situ user queries</strong> and evaluate their ability to provide responses aligned with user's dynamically changing profile across <strong>15 task scenarios</strong>.</li>
+            <li>We observe that frontier models such as GPT-4.1, o4-mini, GPT-4.5, o1, DeepSeek-R1, Gemini-2.0, Llama-4 still <strong>struggle</strong> to be user-aware and deliver personalized responses, especially when the knowledge of the user needs to be applied across <strong>new scenarios</strong>.</li>
           </ul>
         </div>
       </div>
@@ -1161,9 +1255,9 @@
       <div class="columns is-centered">
         <div class="column is-10">
           <figure class="image">
-            <img src="static/images/results_length_1m.png" alt="Performance on ultra-long context up to 60 sessions/1M tokens">
+            <img src="static/images/results_long_context_new.png" alt="Performance on ultra-long context up to 60 sessions/1M tokens">
             <figcaption class="has-text-centered mt-2" style="font-style: normal;">
-              We observe similar patterns of the position of user information in interaction history compared to the 32k token length results.
+              We observe similar patterns of the position of user information in interaction history compared to the 128k token length results.
             </figcaption>
           </figure>
         </div>
@@ -1230,7 +1324,15 @@
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <h2 class="title">BibTeX</h2>
-      <pre><code>BibTex Code Here</code></pre>
+      <pre><code>@misc{jiang2025knowmerespondme,
+        title={Know Me, Respond to Me: Benchmarking LLMs for Dynamic User Profiling and Personalized Responses at Scale}, 
+        author={Bowen Jiang and Zhuoqun Hao and Young-Min Cho and Bryan Li and Yuan Yuan and Sihao Chen and Lyle Ungar and Camillo J. Taylor and Dan Roth},
+        year={2025},
+        eprint={2504.14225},
+        archivePrefix={arXiv},
+        primaryClass={cs.CL},
+        url={https://arxiv.org/abs/2504.14225}, 
+  }</code></pre>
     </div>
 </section>
 <!--End BibTex citation -->
